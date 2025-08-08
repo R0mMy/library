@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact name="unnamed">
+    <output-path>$PROJECT_DIR$/out/artifacts/unnamed</output-path>
+    <root id="root">
+      <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:5.2.1.RELEASE" />
+      <element id="library" level="project" name="Maven: org.springframework:spring-web:5.2.1.RELEASE" />
+    </root>
+  </artifact>
+</component>
