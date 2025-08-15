@@ -1,8 +1,8 @@
 package org.example.util;
 
 
-import org.example.dao.PersonDAO;
 import org.example.models.Person;
+import org.example.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -11,10 +11,11 @@ import org.springframework.validation.Validator;
 @Component
 public class PersonValidator implements Validator {
 
-    private final PersonDAO personDAO;
+    private final PersonService personService;
     @Autowired
-    public PersonValidator(PersonDAO personDAO) {
-        this.personDAO = personDAO;
+    public PersonValidator(PersonService personService) {
+        this.personService = personService;
+
     }
 
 
@@ -27,7 +28,7 @@ public class PersonValidator implements Validator {
     public void validate(Object o, Errors errors) {
         Person person = (Person) o;
 
-        if(personDAO.show(person.getName()).isPresent()){
+        if((personService.findByName(person.getName())).isPresent()){
             errors.rejectValue("name", "", "ФИО должно быть уникальным!");
         }
 
